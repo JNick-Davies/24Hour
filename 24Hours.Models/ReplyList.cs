@@ -8,5 +8,6 @@ namespace _24Hours.Models
 {
     public class ReplyList
     {
+        public string Title { get; set; }
     }
 }
