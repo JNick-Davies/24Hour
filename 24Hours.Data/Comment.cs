@@ -17,5 +17,6 @@ namespace _24Hours.Data
         public User Author { get; set; }
         [Required]
         public Post CommentPost { get; set; }
+
     }
 }

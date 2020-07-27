@@ -13,5 +13,7 @@ namespace _24Hours.Data
         public Post LikedPost { get; set; }
         [Required]
         public User Liker { get; set; } //who is doing the liking (alt user)
+
+        /*changes!*/
     }
 }
