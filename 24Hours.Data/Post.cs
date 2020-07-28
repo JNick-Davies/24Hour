@@ -13,9 +13,6 @@ namespace _24Hours.Data
     {
         [Key]
         public int PostId { get; set; }
-        [ForeignKey(nameof(UserId))]
-        public virtual User User { get; set; }
-
         [Required]
         public string Title { get; set; }
         [Required]

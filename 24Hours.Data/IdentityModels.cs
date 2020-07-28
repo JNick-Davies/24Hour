@@ -42,26 +42,6 @@ namespace _24Hours.Data
             modelBuilder
              .Conventions
              .Remove<PluralizingTableNameConvention>();
-
-        
-        public DbSet<Comment> Comments { get; set; }
-        public DbSet<User> AppUsers { get; set; }
-        public DbSet<Post> Posts { get; set; }
-        public DbSet<Reply> Replies { get; set; }
-        public DbSet<Like> Likes { get; set; }
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            modelBuilder
-                .Conventions
-                .Remove<PluralizingTableNameConvention>();
-
-
-            modelBuilder
-                .Configurations
-                .Add(new IdentityUserLoginConfiguration())
-                .Add(new IdentityUserRoleConfiguration());
-
-
         }
 
         public class IdentityUserLoginConfiguration : EntityTypeConfiguration<IdentityUserLogin>
@@ -71,30 +51,13 @@ namespace _24Hours.Data
                 HasKey(iul => iul.UserId);
             }
         }
-
         public class IdentityUserRoleConfiguration : EntityTypeConfiguration<IdentityUserRole>
         {
             public IdentityUserRoleConfiguration()
             {
                 HasKey(iur => iur.UserId);
+
             }
-
-        }
-        
-    }
-    public class IdentityUserLoginConfiguration : EntityTypeConfiguration<IdentityUserLogin>
-    {
-        public IdentityUserLoginConfiguration()
-        {
-            HasKey(iul => iul.UserId);
-        }
-    }
-    public class IdentityUserRoleConfiguration : EntityTypeConfiguration<IdentityUserRole>
-    {
-        public IdentityUserRoleConfiguration()
-        {
-            HasKey(iur => iur.UserId);
-
         }
     }
 }
