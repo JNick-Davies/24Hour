@@ -11,10 +11,14 @@ namespace _24Hours.Models
     public class CommentList
     {
 
+        public int Id { get; set; }
+
+
         [Required]
         public string Title { get; set; }
 
         public int CommentId { get; set; }
+
         public string Text { get; set; }
         public virtual Post CommentPost { get; set; }
         public virtual User Author { get; set; }
