@@ -8,11 +8,15 @@ using System.Threading.Tasks;
 
 namespace _24Hours.Models
 {
-    public class LikeCreate
+    public class CommentEdit
     {
         [Required]
-        public Post LikedPost { get; set; }
+        public string Text { get; set; }
+        
+        public virtual Post CommentPost { get; set; }
         [Required]
-        public User Liker { get; set; }
+        public virtual User Author { get; set; }
+
+        public int Id { get; set; }
     }
 }
