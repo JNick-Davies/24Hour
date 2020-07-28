@@ -21,7 +21,7 @@ namespace _24Hours.Services
         {
             var entity = new Post()
             {
-                Author = model.Author,
+                UserId = _userId,
                 Text = model.Text,
                 Title = model.Title,
                 PostId = model.PostId
@@ -33,18 +33,17 @@ namespace _24Hours.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-        public IEnumerable<PostList> GetPosts()
+        public IEnumerable<PostListItem> GetPosts()
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
                     ctx
                         .Posts
-                        .Where(e => e.Author.UserId == _userId)
-                        .Select(e => new PostList
+                        .Where(e => e.UserId == _userId)
+                        .Select(e => new PostListItem
                         {
                             PostId = e.PostId,
-                            Author = e.Author,
                             Text = e.Text,
                             Title = e.Title
                         });
@@ -58,25 +57,24 @@ namespace _24Hours.Services
                 var entity =
                     ctx
                         .Posts
-                        .Single(e => e.PostId == id && e.Author.UserId == _userId);
+                        .Single(e => e.PostId == id && e.UserId == _userId);
 
                 return new PostDetail()
                 {
-                    Author = entity.Author,
                     PostId = entity.PostId,
                     Text = entity.Text,
                     Title = entity.Title
                 };
             }
         }
-        public bool UpdatePost(PostEdit model)
+       /* public bool UpdatePost(PostEdit model)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                         .Posts
-                        .Single(e => e.PostId == model.PostId && e.Author.UserId == _userId);
+                        .Single(e => e.PostId == model.PostId && e.UserId.UserId == _userId);
                 entity.Text = model.Text;
                 entity.Title = model.Title;
                 return ctx.SaveChanges() == 1;
@@ -89,10 +87,10 @@ namespace _24Hours.Services
                 var entity =
                         ctx
                             .Posts
-                            .Single(e => e.PostId == postId && e.Author.UserId == _userId);
+                            .Single(e => e.PostId == postId && e.UserId.UserId == _userId);
                 ctx.Posts.Remove(entity);
                 return ctx.SaveChanges() == 1;
             }
-        }
+        } */
     }
 }

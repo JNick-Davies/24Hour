@@ -8,11 +8,11 @@ using _24Hours.Models;
 
 namespace _24Hours.Services
 {
-    public class AppUserservice
+    public class Userservice
     {
         private readonly Guid _userId;
 
-        public AppUserservice(Guid userId)
+        public Userservice(Guid userId)
         {
             _userId = userId;
         }
@@ -21,9 +21,10 @@ namespace _24Hours.Services
         {
             var entity = new User()
             {
+                UserId = new Guid(),
                 Email = model.Email,
-                Name = model.Name,
-                UserId = new Guid()
+                Name = model.Name
+                
             };
 
             using (var ctx = new ApplicationDbContext())
@@ -32,13 +33,13 @@ namespace _24Hours.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-        public IEnumerable<UserList> GetAppUsers()
+       /* public IEnumerable<UserList> GetUsers()
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
                     ctx
-                        .AppUsers
+                        .Users
                         .Where(e => e.UserId == _userId)
                         .Select(e => new UserList
                         {
@@ -48,14 +49,14 @@ namespace _24Hours.Services
                         });
                 return query.ToArray();
             }
-        }
+        } 
         public UserDetail GetUserById(Guid id)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
-                        .AppUsers
+                        .Users
                         .Single(e => e.UserId == id);
 
                 return new UserDetail()
@@ -72,7 +73,7 @@ namespace _24Hours.Services
             {
                 var entity =
                     ctx
-                        .AppUsers
+                        .Users
                         .Single(e => e.UserId == model.UserId);
                 entity.Email = model.Email;
                 entity.Name = model.Name;
@@ -85,11 +86,11 @@ namespace _24Hours.Services
             {
                 var entity =
                         ctx
-                            .AppUsers
+                            .Users
                             .Single(e => e.UserId == UserId);
-                ctx.AppUsers.Remove(entity);
+                ctx.Users.Remove(entity);
                 return ctx.SaveChanges() == 1;
             }
-        }
+        } */
     }
 }

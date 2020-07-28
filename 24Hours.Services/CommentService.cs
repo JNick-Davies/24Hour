@@ -21,7 +21,7 @@ namespace _24Hours.Services
         {
             var entity = new Comment()
             {
-                Author = model.Author,
+                UserId = _userId,
                 CommentPost = model.CommentPost,
                 Text = model.Text
             };
@@ -39,13 +39,12 @@ namespace _24Hours.Services
                 var query =
                     ctx
                         .Comments
-                        .Where(e => e.Author.UserId == _userId)
+                        .Where(e => e.UserId == _userId)
                         .Select(e => new CommentList
                         {
-                            Id = e.Id,
                             CommentPost = e.CommentPost,
                             Text = e.Text,
-                            Author = e.Author,
+                            CommentId = e.CommentId
                         });
                 return query.ToArray();
             }
@@ -57,24 +56,23 @@ namespace _24Hours.Services
                 var entity =
                     ctx
                         .Comments
-                        .Single(e => e.Id == id && e.Author.UserId == _userId);
+                        .Single(e => e.CommentId == id && e.UserId == _userId);
                         
                 return new CommentDetail() { 
-                    Author = entity.Author,
+                    CommentId = entity.CommentId,
                     Text = entity.Text,
-                    Id = entity.Id,
                     CommentPost = entity.CommentPost
                 };
             }
         }
-        public bool UpdateComment(CommentEdit model)
+      /*  public bool UpdateComment(CommentEdit model)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                         .Comments
-                        .Single(e => e.Id == model.Id && e.Author.UserId == _userId);
+                        .Single(e => e.Id == model.Id && e.UserId.UserId == _userId);
                 entity.Text = model.Text;
                 return ctx.SaveChanges() == 1;
             }
@@ -86,10 +84,10 @@ namespace _24Hours.Services
                 var entity =
                         ctx
                             .Comments
-                            .Single(e => e.Id == CommentId && e.Author.UserId == _userId);
+                            .Single(e => e.Id == CommentId && e.UserId.UserId == _userId);
                 ctx.Comments.Remove(entity);
                 return ctx.SaveChanges() == 1;
             }
-        }
+        } */
     }
 }

@@ -16,7 +16,7 @@ namespace _24Hours.Models
         [Required]
         public string Text { get; set; }
         [Required]
-        public User Author { get; set; }
+        public User UserId { get; set; }
         [Required]
         public int PostId { get; set; }
 

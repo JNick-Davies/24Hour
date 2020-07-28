@@ -10,10 +10,6 @@ namespace _24Hours.Models
 {
     public class CommentList
     {
-
-        public int Id { get; set; }
-
-
         [Required]
         public string Title { get; set; }
 
