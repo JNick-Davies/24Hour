@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace _24Hours.Models
 {
-    public class LikeCreate
+    public class LikeDetail
     {
         [Required]
         public Post LikedPost { get; set; }
