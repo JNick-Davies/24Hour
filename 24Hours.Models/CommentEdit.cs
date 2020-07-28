@@ -1,4 +1,4 @@
-using _24Hours.Data;
+﻿using _24Hours.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -8,19 +8,15 @@ using System.Threading.Tasks;
 
 namespace _24Hours.Models
 {
-    public class CommentDetail
+    public class CommentEdit
     {
         [Required]
-
-        public int CommentId { get; set; }
+        public string Text { get; set; }
+        
+        public virtual Post CommentPost { get; set; }
         [Required]
-        public string Content { get; set; }
+        public virtual User Author { get; set; }
 
         public int Id { get; set; }
-        [Required]
-        public string Text { get; set; }
-        [Required]
-        public Post CommentPost { get; set; }
-
     }
 }

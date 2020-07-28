@@ -1,14 +1,13 @@
-﻿using _24Hours.Data;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using _24Hours.Data;
 
 namespace _24Hours.Models
 {
-    public class ReplyList : CommentList
+    public class UserEdit : User
     {
-        public Comment ReplyComment { get; set; }
     }
 }
