@@ -10,6 +10,6 @@ namespace _24Hours.Data
     public class Reply : Comment
     {
         [Required]
-        public string ReplyComment { get; set; }
+        public Comment ReplyComment { get; set; }
     }
 }

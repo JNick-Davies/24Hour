@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace _24Hours.Models
 {
-    public class PostDetail
+    public class PostEdit
     {
         [Required]
         public string Title { get; set; }

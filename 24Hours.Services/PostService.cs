@@ -17,78 +17,80 @@ namespace _24Hours.Services
             _userId = userId;
         }
 
-        public bool CreateComment(CommentCreate model)
+        public bool CreatePost(PostCreate model)
         {
-            var entity = new Comment()
+            var entity = new Post()
             {
                 Author = model.Author,
-                CommentPost = model.CommentPost,
-                Text = model.Text
+                Text = model.Text,
+                Title = model.Title,
+                PostId = model.PostId
             };
 
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.Comments.Add(entity);
+                ctx.Posts.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
         }
-        public IEnumerable<CommentList> GetComments()
+        public IEnumerable<PostList> GetPosts()
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
                     ctx
-                        .Comments
+                        .Posts
                         .Where(e => e.Author.UserId == _userId)
-                        .Select(e => new CommentList
+                        .Select(e => new PostList
                         {
-                            CommentId = e.Id,
-                            CommentPost = e.CommentPost,
-                            Text = e.Text,
+                            PostId = e.PostId,
                             Author = e.Author,
+                            Text = e.Text,
+                            Title = e.Title
                         });
                 return query.ToArray();
             }
         }
-        public CommentDetail GetCommentById(int id)
+        public PostDetail GetPostById(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
-                        .Comments
-                        .Single(e => e.Id == id && e.Author.UserId == _userId);
+                        .Posts
+                        .Single(e => e.PostId == id && e.Author.UserId == _userId);
 
-                return new CommentDetail()
+                return new PostDetail()
                 {
                     Author = entity.Author,
+                    PostId = entity.PostId,
                     Text = entity.Text,
-                    Id = entity.Id,
-                    CommentPost = entity.CommentPost
+                    Title = entity.Title
                 };
             }
         }
-        public bool UpdateComment(CommentEdit model)
+        public bool UpdatePost(PostEdit model)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
-                        .Comments
-                        .Single(e => e.Id == model.Id && e.Author.UserId == _userId);
+                        .Posts
+                        .Single(e => e.PostId == model.PostId && e.Author.UserId == _userId);
                 entity.Text = model.Text;
+                entity.Title = model.Title;
                 return ctx.SaveChanges() == 1;
             }
         }
-        public bool DeleteComment(int CommentId)
+        public bool DeletePost(int postId)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                         ctx
-                            .Comments
-                            .Single(e => e.Id == CommentId && e.Author.UserId == _userId);
-                ctx.Comments.Remove(entity);
+                            .Posts
+                            .Single(e => e.PostId == postId && e.Author.UserId == _userId);
+                ctx.Posts.Remove(entity);
                 return ctx.SaveChanges() == 1;
             }
         }

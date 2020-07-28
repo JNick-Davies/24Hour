@@ -14,5 +14,6 @@ namespace _24Hours.Models
         public virtual Post CommentPost { get; set; }
 
         public virtual User Author { get; set; }
+        public int Id { get; set; }
     }
 }

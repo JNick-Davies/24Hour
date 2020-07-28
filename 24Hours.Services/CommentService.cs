@@ -42,7 +42,7 @@ namespace _24Hours.Services
                         .Where(e => e.Author.UserId == _userId)
                         .Select(e => new CommentList
                         {
-                            CommentId = e.Id,
+                            Id = e.Id,
                             CommentPost = e.CommentPost,
                             Text = e.Text,
                             Author = e.Author,
