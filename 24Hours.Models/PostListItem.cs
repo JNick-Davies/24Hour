@@ -8,5 +8,8 @@ namespace _24Hours.Models
 {
     public class PostListItem
     {
+        public int ListId { get; set; }
+        public string Title { get; set; }
+        public DateTimeOffset CreatedUtc { get; set; }
     }
 }
