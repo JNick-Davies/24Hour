@@ -14,10 +14,9 @@ namespace _24Hours.Models
        public string Title { get; set; }
         [Required]
         public string Content { get; set; }
-
+        [Required]
         public Post LikedPost { get; set; }
         [Required]
         public User Liker { get; set; }
- develop
     }
 }

@@ -89,6 +89,16 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\24Hours.Data\24Hours.Data.csproj">
+      <Project>{DA58DCEB-8714-4EA3-ADD1-9DEFB87ECA03}</Project>
+      <Name>24Hours.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\24Hours.Models\24Hours.Models.csproj">
+      <Project>{63C8C8BF-72B9-46B5-A015-5922C523345C}</Project>
+      <Name>24Hours.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
