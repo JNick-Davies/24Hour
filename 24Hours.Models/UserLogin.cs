@@ -8,5 +8,7 @@ namespace _24Hours.Models
 {
     public class UserLogin
     {
+        public string LoginName { get; set; }
+        public string Password { get; set; }
     }
 }

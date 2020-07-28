@@ -1,4 +1,4 @@
-using _24Hours.Data;
+﻿using _24Hours.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -8,16 +8,11 @@ using System.Threading.Tasks;
 
 namespace _24Hours.Models
 {
-    public class LikeCreate
+    public class LikeDetail
     {
         [Required]
-       public string Title { get; set; }
-        [Required]
-        public string Content { get; set; }
-
         public Post LikedPost { get; set; }
         [Required]
         public User Liker { get; set; }
- develop
     }
 }

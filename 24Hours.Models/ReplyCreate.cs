@@ -8,5 +8,8 @@ namespace _24Hours.Models
 {
     public class ReplyCreate
     {
+        public string Title { get; set; }
+        public string Content { get; set; }
+
     }
 }

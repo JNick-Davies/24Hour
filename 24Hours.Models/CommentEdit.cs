@@ -8,16 +8,15 @@ using System.Threading.Tasks;
 
 namespace _24Hours.Models
 {
-    public class CommentList
+    public class CommentEdit
     {
-
         [Required]
-        public string Title { get; set; }
-
-        public int CommentId { get; set; }
         public string Text { get; set; }
+        
         public virtual Post CommentPost { get; set; }
+        [Required]
         public virtual User Author { get; set; }
 
+        public int Id { get; set; }
     }
 }
