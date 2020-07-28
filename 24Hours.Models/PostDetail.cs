@@ -11,6 +11,7 @@ namespace _24Hours.Models
     public class PostDetail
     {
         [Required]
+
         public string Title { get; set; }
         [Required]
         public string Text { get; set; }
@@ -18,5 +19,16 @@ namespace _24Hours.Models
         public User Author { get; set; }
         [Required]
         public int PostId { get; set; }
+
+        public int PostId { get; set; }
+        [Required]
+        public string Title { get; set; }
+        [Required]
+        public string Content { get; set; }
+        public DateTimeOffset CreatedUtc { get; set; }
+        [Display(Name = "Modified")]
+        public DateTimeOffset? ModifiedUtc { get; set; }
+
+
     }
 }

@@ -9,6 +9,10 @@ namespace _24Hours.Models
 {
     public class ReplyList : CommentList
     {
+
         public Comment ReplyComment { get; set; }
+
+        public string Title { get; set; }
+
     }
 }

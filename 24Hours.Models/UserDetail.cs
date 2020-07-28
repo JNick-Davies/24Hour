@@ -9,5 +9,8 @@ namespace _24Hours.Models
 {
     public class UserDetail : User
     {
+        public DateTimeOffset CreatedOn { get; set; }
+        public string UserName { get; set; }
+        public string Password { get; set; }
     }
 }

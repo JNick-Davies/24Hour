@@ -1,4 +1,4 @@
-﻿using System.Data.Entity;
+using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Security.Claims;
@@ -27,11 +27,22 @@ namespace _24Hours.Data
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
-        
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
+
+        public DbSet<Post> Posts { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<Reply> Replies { get; set; }
+        public DbSet<Like> Likes { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder
+             .Conventions
+             .Remove<PluralizingTableNameConvention>();
+
         
         public DbSet<Comment> Comments { get; set; }
         public DbSet<User> AppUsers { get; set; }
@@ -44,10 +55,30 @@ namespace _24Hours.Data
                 .Conventions
                 .Remove<PluralizingTableNameConvention>();
 
+
             modelBuilder
                 .Configurations
                 .Add(new IdentityUserLoginConfiguration())
                 .Add(new IdentityUserRoleConfiguration());
+
+
+        }
+
+        public class IdentityUserLoginConfiguration : EntityTypeConfiguration<IdentityUserLogin>
+        {
+            public IdentityUserLoginConfiguration()
+            {
+                HasKey(iul => iul.UserId);
+            }
+        }
+
+        public class IdentityUserRoleConfiguration : EntityTypeConfiguration<IdentityUserRole>
+        {
+            public IdentityUserRoleConfiguration()
+            {
+                HasKey(iur => iur.UserId);
+            }
+
         }
         
     }
@@ -63,6 +94,7 @@ namespace _24Hours.Data
         public IdentityUserRoleConfiguration()
         {
             HasKey(iur => iur.UserId);
+
         }
     }
 }

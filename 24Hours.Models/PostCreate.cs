@@ -11,6 +11,7 @@ namespace _24Hours.Models
     public class PostCreate
     {
         [Required]
+
         public string Title { get; set; }
         [Required]
         public string Text { get; set; }
@@ -18,5 +19,10 @@ namespace _24Hours.Models
         public User Author { get; set; }
         [Required]
         public int PostId { get; set; }
+
+        public int CommentId { get; set; }
+        [Required]
+        public string Content { get; set; }
+
     }
 }

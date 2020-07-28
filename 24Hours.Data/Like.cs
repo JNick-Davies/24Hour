@@ -9,9 +9,13 @@ namespace _24Hours.Data
 {
     public class Like
     {
+        [Key]
+        public int LikeId { get; set; }
         [Required]
         public Post LikedPost { get; set; }
+
         [Required]
         public User Liker { get; set; } //who is doing the liking (alt user)
+
     }
 }
