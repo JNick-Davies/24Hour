@@ -14,9 +14,5 @@ namespace _24Hours.Models
         [Required]
         public Comment ReplyComment { get; set; } 
 
-        public string Title { get; set; }
-        public string Content { get; set; }
-
-
     }
 }

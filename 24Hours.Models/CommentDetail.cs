@@ -20,8 +20,6 @@ namespace _24Hours.Models
         [Required]
         public string Text { get; set; }
         [Required]
-        public User Author { get; set; }
-        [Required]
         public Post CommentPost { get; set; }
 
     }

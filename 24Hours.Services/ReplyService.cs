@@ -21,10 +21,9 @@ namespace _24Hours.Services
         {
             var entity = new Reply()
             {
+                UserId = _userId,
                 ReplyComment = model.ReplyComment,
-                Author = model.Author,
                 CommentPost = model.CommentPost,
-                Id = model.Id,
                 Text = model.Text
                 
 
@@ -43,19 +42,17 @@ namespace _24Hours.Services
                 var query =
                     ctx
                         .Replies
-                        .Where(e => e.Author.UserId == _userId)
+                        .Where(e => e.UserId == _userId)
                         .Select(e => new ReplyList
                         {
-                            Id = e.Id,
                             CommentPost = e.CommentPost,
                             Text = e.Text,
-                            Author = e.Author,
                             ReplyComment = e.ReplyComment
                         });
                 return query.ToArray();
             }
         }
-        public ReplyDetail GetReplyById(int id)
+      /*  public ReplyDetail GetReplyById(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -98,6 +95,6 @@ namespace _24Hours.Services
                 ctx.Replies.Remove(entity);
                 return ctx.SaveChanges() == 1;
             }
-        }
+        } */
     }
 }

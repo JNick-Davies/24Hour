@@ -20,7 +20,7 @@ namespace _24Hours.Models
         
         public virtual Post CommentPost { get; set; }
 
-        public virtual User Author { get; set; }
+        public User UserID { get; set; }
 
         public int Id { get; set; }
 

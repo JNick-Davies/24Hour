@@ -31,7 +31,7 @@ namespace _24Hours.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-        public IEnumerable<LikeList> GetLikes()
+       /* public IEnumerable<LikeList> GetLikes()
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -58,6 +58,6 @@ namespace _24Hours.Services
                 ctx.Likes.Remove(entity);
                 return ctx.SaveChanges() == 1;
             }
-        }
+        } */
     }
 }
