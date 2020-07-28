@@ -380,6 +380,14 @@
       <Project>{DA58DCEB-8714-4EA3-ADD1-9DEFB87ECA03}</Project>
       <Name>24Hours.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\24Hours.Models\24Hours.Models.csproj">
+      <Project>{63c8c8bf-72b9-46b5-a015-5922c523345c}</Project>
+      <Name>24Hours.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\24Hours.Services\24Hours.Services.csproj">
+      <Project>{93f130fd-a7e3-4cb6-8618-f2413801b087}</Project>
+      <Name>24Hours.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -17,10 +17,10 @@ namespace _24Hours.Data
         public string Title { get; set; }
         [Required]
         public string Text { get; set; }
-        [ForeignKey("AuthorId")]
-        public User Author { get; set; }
-        public int AuthorId { get; set; }
-        public DateTimeOffset CreatedUtc { get; set; }
+        public Guid UserId { get; set; }
+        [ForeignKey(nameof(UserId))]
+        public virtual User User { get; set; }
+
     }
 }
 
